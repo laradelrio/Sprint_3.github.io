@@ -1,6 +1,6 @@
 // If you have time, you can move this variable "products" to a json or js file and load the data in this js. It will look more professional
 var products = [
-   {
+    {
         id: 1,
         name: 'cooking oil',
         price: 10.5,
@@ -73,21 +73,21 @@ var total = 0;
 
 // Exercise 1
 //Find product in array and add to cartList
-function buy(id) { 
+function buy(id) {
     let foundProduct;
     let i = 0;
 
-    while (i<products.length && foundProduct==undefined){
-        if (products[i].id == id){
-            foundProduct = id;
-        } else{
+    while (i < products.length && foundProduct == undefined) {
+        if (products[i].id == id) {
+            foundProduct = products[i];
+        } else {
             i++;
         }
     }
 
     cartList.push(foundProduct);
     console.log(cartList);
-       
+
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
 }
@@ -102,7 +102,7 @@ function cleanCart() {
 function calculateTotal() {
     let total = 0;
 
-    for (let i=0; i<cartList.length; i++){
+    for (let i = 0; i < cartList.length; i++) {
         total += cartList[i].price;
     }
     console.log(total);
@@ -112,18 +112,62 @@ function calculateTotal() {
 
 // Exercise 4
 function generateCart() {
+    
+    
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+
+    for (let i = 0; i < cartList.length; i++) {
+        let j = 0 ;
+        let itemNotInCart = true;
+        while (j < cart.length &&  itemNotInCart == true){
+            if (cartList[i].id == cart[j].id) {
+                cart[j].quantity++;
+                itemNotInCart = false;
+            }
+            j++
+        }
+       /* for (let j = 0; j < cart.length; j++) {
+            if (cartList[i].id == cart[j].id) {
+                cart[j].quantity++;
+                itemNotInCart = false;
+
+            }
+        }*/
+
+        if (itemNotInCart) {
+            cartList[i].quantity = 1;
+            cart.push(cartList[i]);
+        }
+
+        itemNotInCart = true;
+    }
+
+    console.log(cart);
+
 }
 
 // Exercise 5
 function applyPromotionsCart() {
-    // Apply promotions to each item in the array "cart"
+    
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].id == 1 && cart[i].quantity >= cart[i].offer.number) {
+            cart[i].subtotalWithDiscount = cart[i].quantity*10; 
+        }
+
+        if (cart[i].id == 3 && cart[i].quantity >= cart[i].offer.number) {
+            cart[i].subtotalWithDiscount = cart[i].quantity*(cart[i].price*(2/3)); 
+        }
+        // Apply promotions to each item in the array "cart"
+    }
+
+    console.log(cart)
 }
 
-// Exercise 6
+// Exercise 
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
+
 }
 
 
@@ -142,7 +186,7 @@ function removeFromCart(id) {
     // 2. Add found product to the cartList array
 }
 
-function open_modal(){
-	console.log("Open Modal");
-	printCart();
+function open_modal() {
+    console.log("Open Modal");
+    printCart();
 }
