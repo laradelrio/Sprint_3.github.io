@@ -112,28 +112,28 @@ function calculateTotal() {
 
 // Exercise 4
 function generateCart() {
-    
-    
+
+
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
 
     for (let i = 0; i < cartList.length; i++) {
-        let j = 0 ;
+        let j = 0;
         let itemNotInCart = true;
-        while (j < cart.length &&  itemNotInCart == true){
+        while (j < cart.length && itemNotInCart == true) {
             if (cartList[i].id == cart[j].id) {
                 cart[j].quantity++;
                 itemNotInCart = false;
             }
             j++
         }
-       /* for (let j = 0; j < cart.length; j++) {
-            if (cartList[i].id == cart[j].id) {
-                cart[j].quantity++;
-                itemNotInCart = false;
-
-            }
-        }*/
+        /* for (let j = 0; j < cart.length; j++) {
+             if (cartList[i].id == cart[j].id) {
+                 cart[j].quantity++;
+                 itemNotInCart = false;
+ 
+             }
+         }*/
 
         if (itemNotInCart) {
             cartList[i].quantity = 1;
@@ -149,14 +149,14 @@ function generateCart() {
 
 // Exercise 5
 function applyPromotionsCart() {
-    
+
     for (let i = 0; i < cart.length; i++) {
         if (cart[i].id == 1 && cart[i].quantity >= cart[i].offer.number) {
-            cart[i].subtotalWithDiscount = cart[i].quantity*10; 
+            cart[i].subtotalWithDiscount = cart[i].quantity * 10;
         }
 
         if (cart[i].id == 3 && cart[i].quantity >= cart[i].offer.number) {
-            cart[i].subtotalWithDiscount = cart[i].quantity*(cart[i].price*(2/3)); 
+            cart[i].subtotalWithDiscount = cart[i].quantity * (cart[i].price * (2 / 3));
         }
         // Apply promotions to each item in the array "cart"
     }
@@ -166,7 +166,14 @@ function applyPromotionsCart() {
 
 // Exercise 
 function printCart() {
+    let 
+    for (let i = 0; i < cart.length; i++) {
+        for (let x of cart[i]) {
+
+        }
+    }
     // Fill the shopping cart modal manipulating the shopping cart dom
+
 
 }
 
