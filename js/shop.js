@@ -2,7 +2,7 @@
 var products = [
     {
         id: 1,
-        name: 'cooking oil',
+        name: 'Cooking oil',
         price: 10.5,
         type: 'grocery',
         offer: {
@@ -164,30 +164,50 @@ function applyPromotionsCart() {
     console.log(cart)
 }
 
-// Exercise 
-function printCart() {
-    let 
-    for (let i = 0; i < cart.length; i++) {
-        for (let x of cart[i]) {
+// Exercise 6
+// Fill the shopping cart modal manipulating the shopping cart dom
+function printCart() { 
+            
+    for (let i = 0; i <= cart.length; i++) {
 
+        var tbody = document.querySelector("#cart_list");
+
+        var tr = document.createElement("tr");
+        tbody.append(tr);
+
+        var th = document.createElement("th");
+        th.setAttribute("scope", "row");
+        th.innerHTML = cart[i].name;
+
+        var tdPrice1 = document.createElement("td");
+        tdPrice1.innerHTML = cart[i].price;
+
+        var tdQuantiy = document.createElement("td");
+        tdQuantiy.innerHTML = cart[i].quantity;
+
+        var tdTotalPrice = document.createElement("td");
+        if (cart[i].hasOwnProperty("subtotalWithDiscount")) {
+            tdTotalPrice.innerHTML = cart[i].subtotalWithDiscount;
+        } else {
+            tdTotalPrice.innerHTML = cart[i].quantity * cart[i].price;
         }
+
+        tr.append(th, tdPrice1, tdQuantiy, tdTotalPrice);
+
     }
-    // Fill the shopping cart modal manipulating the shopping cart dom
-
-
 }
 
 
 // ** Nivell II **
 
-// Exercise 7
+// Exercise 8
 function addToCart(id) {
     // Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
 }
 
-// Exercise 8
+// Exercise 9
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
