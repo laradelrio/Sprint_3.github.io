@@ -1,0 +1,171 @@
+:root {
+    --pink: #E6007E;
+    --ligt-pink:#FDE4F1;
+    --gray: #F2F2F2;
+  }
+
+#navbar-example2{
+    background-color: var(--gray);
+    color: black;
+    font-size: larger;
+}
+
+.navbar-brand{
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    font-size: larger; 
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.nav-link-top{
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    font-size: medium; 
+    text-transform: uppercase;
+    text-decoration: none;
+
+}
+
+.nav-link-top:hover{
+    color: black;
+    font-weight: 200;
+    
+}
+
+.icon{
+    color:gray;
+    margin-right: 6px;
+}
+
+.cartButton{
+    background-color: white;
+    color: var(--pink);
+    border-radius: 7px;
+    border-color: var(--pink);
+    border-style: solid;
+    width:100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px; 
+    padding-right: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    letter-spacing: 2px ;
+    text-decoration: none;
+    text-transform: uppercase;     
+}
+
+.cartButton:hover{
+    border-width: 5px;
+    color: var(--pink);
+}
+.rounded-pill{
+    background:#FDE4F1;
+    color: var(--pink)
+}
+
+#header{
+    background-image: url(/images/pinkGradient.png); 
+    background-position: 50% 50%; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+
+      
+}
+#header-text{
+    font-size: xx-large; 
+    color: var(--pink);
+
+   
+}
+
+.container{
+    text-align: center;
+}
+
+.product-section-title{
+    background-color: var(--gray);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.card{
+    max-height: 525px;
+
+}
+
+.product-image{
+    height:50%;
+    object-fit:cover;
+}
+
+.pinkButton{
+    background-color: var(--pink);
+    color: #fff;
+    border-radius: 7px;
+    border-color: var(--pink);
+    border-style: solid;
+    width:100%;
+    padding-top: 10px;
+    padding-bottom: 10px; 
+    font-family: sans-serif; 
+    font-size: large;
+    text-decoration: none;
+    
+}
+
+
+.pinkButton:hover{
+    background-color: white;
+    border-color: var(--pink);
+    color:var(--pink);
+}
+
+.grayButton{
+    background-color: white;
+    color:#7e7d7df6;
+    border-radius: 7px;
+    border-color: var(--gray);
+    border-style: solid;
+    width:100%;
+    padding-top: 10px;
+    padding-bottom: 10px;; 
+    font-family: sans-serif; 
+    font-size: small;
+    text-decoration: none;
+    
+}
+
+.grayButton:hover{
+   border-color: #b6b3b3;
+    color:black;
+}
+
+.modal-color{
+    color: rgb(79, 79, 79);
+}
+
+footer{
+    background-color: var(--gray);
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.check-out{
+    margin-top:50px;
+    margin-bottom:50px;
+    padding: 50px;;
+    width: 100vh;  
+
+}
+.checkout-info{
+    font-family: 'Montserrat', sans-serif;
+    font-size: x-large;
+}
