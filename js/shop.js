@@ -1,5 +1,5 @@
 // If you have time, you can move this variable "products" to a json or js file and load the data in this js. It will look more professional
-var products = [
+let products = [
     {
         id: 1,
         name: 'Cooking oil',
@@ -64,12 +64,13 @@ var products = [
     }
 ]
 // Array with products (objects) added directly with push(). Products in this array are repeated.
-var cartList = [];
+let cartList = [];
 
 // Improved version of cartList. Cart is an array of products (objects), but each one has a quantity field to define its quantity, so these products are not repeated.
-var cart = [];
+let cart = [];
 
-var total = 0;
+//Price of the cart with discounts
+let total = 0;
 
 // Exercise 1
 //Find product in array and add to cartList
@@ -77,8 +78,8 @@ function buy(id) {
     let foundProduct;
     let i = 0;
 
-    while (i < products.length && foundProduct == undefined) {
-        if (products[i].id == id) {
+    while (i < products.length && foundProduct === undefined) {
+        if (products[i].id === id) {
             foundProduct = products[i];
         } else {
             i++;
@@ -88,8 +89,7 @@ function buy(id) {
     cartList.push(foundProduct);
     console.log(cartList);
 
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cartList array
+    document.getElementById("count_product").innerHTML = cartList.length;
 }
 
 // Exercise 2
@@ -99,20 +99,24 @@ function cleanCart() {
 }
 
 // Exercise 3
+//toatal price of cart with discount is applicable
 function calculateTotal() {
-    let total = 0;
+    total = 0;
 
-    for (let i = 0; i < cartList.length; i++) {
-        total += cartList[i].price;
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].hasOwnProperty("subtotalWithDiscount")) {
+            total += cart[i].subtotalWithDiscount;
+        } else {
+            total += (cart[i].quantity * cart[i].price);
+        }
     }
-    console.log(total);
-    // Calculate total price of the cart using the "cartList" array
 
+    console.log(total);
 }
 
 // Exercise 4
 function generateCart() {
-
+    cart = [];
 
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
@@ -127,14 +131,7 @@ function generateCart() {
             }
             j++
         }
-        /* for (let j = 0; j < cart.length; j++) {
-             if (cartList[i].id == cart[j].id) {
-                 cart[j].quantity++;
-                 itemNotInCart = false;
- 
-             }
-         }*/
-
+        
         if (itemNotInCart) {
             cartList[i].quantity = 1;
             cart.push(cartList[i]);
@@ -144,7 +141,6 @@ function generateCart() {
     }
 
     console.log(cart);
-
 }
 
 // Exercise 5
@@ -166,26 +162,31 @@ function applyPromotionsCart() {
 
 // Exercise 6
 // Fill the shopping cart modal manipulating the shopping cart dom
-function printCart() { 
-            
+function printCart() {
+    generateCart();
+    applyPromotionsCart();
+    calculateTotal();
+    document.getElementById("total_price").innerHTML = total;
+
+    let tbody = document.querySelector("#cart_list");
+    tbody.innerHTML = "";
+    console.log(cart);
     for (let i = 0; i <= cart.length; i++) {
 
-        var tbody = document.querySelector("#cart_list");
-
-        var tr = document.createElement("tr");
+        let tr = document.createElement("tr");
         tbody.append(tr);
 
-        var th = document.createElement("th");
+        let th = document.createElement("th");
         th.setAttribute("scope", "row");
         th.innerHTML = cart[i].name;
 
-        var tdPrice1 = document.createElement("td");
+        let tdPrice1 = document.createElement("td");
         tdPrice1.innerHTML = cart[i].price;
 
-        var tdQuantiy = document.createElement("td");
+        let tdQuantiy = document.createElement("td");
         tdQuantiy.innerHTML = cart[i].quantity;
 
-        var tdTotalPrice = document.createElement("td");
+        let tdTotalPrice = document.createElement("td");
         if (cart[i].hasOwnProperty("subtotalWithDiscount")) {
             tdTotalPrice.innerHTML = cart[i].subtotalWithDiscount;
         } else {
@@ -193,7 +194,6 @@ function printCart() {
         }
 
         tr.append(th, tdPrice1, tdQuantiy, tdTotalPrice);
-
     }
 }
 
