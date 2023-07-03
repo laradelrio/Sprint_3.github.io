@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<!-- Core theme CSS (includes Bootstrap)-->
+
 </head>
 
 <body>
@@ -119,7 +120,7 @@
 					</div>
 				</div>
 				<div class="col-12 mt-4 final">
-					<button type="submit" id="btn" class="p-2 px-4 btn btn-primary shadow-lg" onclick="validate()">
+					<button type="submit" id="btn" class="p-2 px-4 btn btn-primary shadow-lg" onclick="validate(event)">
 						<i class="fas fa-cart-arrow-down p-2"></i>Save
 					</button>
 				</div>
@@ -167,7 +168,7 @@
 
 	<!-- Core theme JS-->
 	<script src="js/shop.js"></script>
-	<script src="js/checkout.js"></script>
+	<script src="./js/checkout.js" defer></script>
 </body>
 
 </html>
