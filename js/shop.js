@@ -94,8 +94,11 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
+    cart = [];
     cartList = [];
-    console.log(cartList);
+    printCart();
+    console.log(cart);
+    
 }
 
 // Exercise 3
@@ -131,7 +134,7 @@ function generateCart() {
             }
             j++
         }
-        
+
         if (itemNotInCart) {
             cartList[i].quantity = 1;
             cart.push(cartList[i]);
@@ -163,7 +166,7 @@ function applyPromotionsCart() {
 // Exercise 6
 // Fill the shopping cart modal manipulating the shopping cart dom
 function printCart() {
-    generateCart();
+    //generateCart();
     applyPromotionsCart();
     calculateTotal();
     document.getElementById("total_price").innerHTML = total;
@@ -187,7 +190,7 @@ function printCart() {
         tdQuantiy.innerHTML = cart[i].quantity;
 
         let tdTotalPrice = document.createElement("td");
-        if (cart[i].hasOwnProperty("subtotalWithDiscount")) {
+        if (cart[i].hasOwnProperty("subtotalWithDiscount") && cart[i].quantity>=cart[i].offer.number) {
             tdTotalPrice.innerHTML = cart[i].subtotalWithDiscount;
         } else {
             tdTotalPrice.innerHTML = cart[i].quantity * cart[i].price;
@@ -201,9 +204,32 @@ function printCart() {
 // ** Nivell II **
 
 // Exercise 8
+//find clicked product in catalogue, add to cart if not there or increase quanitity
 function addToCart(id) {
+   let foundProduct;
+   let indexFoundProduct;
+
+   for (let i = 0; i < products.length; i++) { 
+        if (products[i].id === id) {
+            foundProduct = products[i]
+            indexFoundProduct = i;
+            cartList.push(foundProduct);
+        }
+    } 
+
+   let indexCartProduct = cart.findIndex(cartProduct => cartProduct === foundProduct);
+    
+   if (indexCartProduct != -1){
+     cart[indexCartProduct].quantity++;
+   }else{
+    products[indexFoundProduct].quantity = 1;;
+    cart.push(products[indexFoundProduct]);
+   }
+
+    document.getElementById("count_product").innerHTML = cartList.length;
+
     // Refactor previous code in order to simplify it 
-    // 1. Loop for to the array products to get the item to add to cart
+    // 1. Loop for to the array products to get the item to add to cart -done
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
 }
 
@@ -211,6 +237,16 @@ function addToCart(id) {
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
+     
+    let indexCartProduct = cart.findIndex(cartProduct => cartProduct.id === id);
+     
+    if (indexCartProduct != -1){
+      cart[indexCartProduct].quantity--;
+      cartList.pop();
+      document.getElementById("count_product").innerHTML = cartList.length;
+    }else{
+     alert("This product is not in the cart")
+    }
 }
 
 function open_modal() {
