@@ -107,7 +107,7 @@ function calculateTotal() {
     total = 0;
 
     for (let i = 0; i < cart.length; i++) {
-        if (cart[i].hasOwnProperty("subtotalWithDiscount")) {
+        if (cart[i].hasOwnProperty("subtotalWithDiscount") && (cart[i].quantity >= cart[i].offer.number)) {
             total += cart[i].subtotalWithDiscount;
         } else {
             total += (cart[i].quantity * cart[i].price);
