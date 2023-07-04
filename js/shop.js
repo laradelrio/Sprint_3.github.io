@@ -93,16 +93,17 @@ function buy(id) {
 }
 
 // Exercise 2
+// Remove all items from cart and cartList
 function cleanCart() {
     cart = [];
     cartList = [];
     printCart();
     console.log(cart);
-    
+
 }
 
 // Exercise 3
-//toatal price of cart with discount is applicable
+//Calculates total price of cart with discount, if applicable
 function calculateTotal() {
     total = 0;
 
@@ -118,11 +119,9 @@ function calculateTotal() {
 }
 
 // Exercise 4
+//Makes fills cart with the items of cartList, without repetition (shows quantity)
 function generateCart() {
     cart = [];
-
-    // Using the "cartlist" array that contains all the items in the shopping cart, 
-    // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
 
     for (let i = 0; i < cartList.length; i++) {
         let j = 0;
@@ -147,6 +146,7 @@ function generateCart() {
 }
 
 // Exercise 5
+// Apply promotions to each item in the array "cart"
 function applyPromotionsCart() {
 
     for (let i = 0; i < cart.length; i++) {
@@ -157,7 +157,7 @@ function applyPromotionsCart() {
         if (cart[i].id == 3 && cart[i].quantity >= cart[i].offer.number) {
             cart[i].subtotalWithDiscount = cart[i].quantity * (cart[i].price * (2 / 3));
         }
-        // Apply promotions to each item in the array "cart"
+
     }
 
     console.log(cart)
@@ -190,7 +190,7 @@ function printCart() {
         tdQuantiy.innerHTML = cart[i].quantity;
 
         let tdTotalPrice = document.createElement("td");
-        if (cart[i].hasOwnProperty("subtotalWithDiscount") && cart[i].quantity>=cart[i].offer.number) {
+        if (cart[i].hasOwnProperty("subtotalWithDiscount") && cart[i].quantity >= cart[i].offer.number) {
             tdTotalPrice.innerHTML = cart[i].subtotalWithDiscount;
         } else {
             tdTotalPrice.innerHTML = cart[i].quantity * cart[i].price;
@@ -204,48 +204,43 @@ function printCart() {
 // ** Nivell II **
 
 // Exercise 8
-//find clicked product in catalogue, add to cart if not there or increase quanitity
+//Find clicked product in catalogue. Then add to the cart if it's not there, or increase quanitity if it is
 function addToCart(id) {
-   let foundProduct;
-   let indexFoundProduct;
+    let foundProduct;
+    let indexFoundProduct;
 
-   for (let i = 0; i < products.length; i++) { 
+    for (let i = 0; i < products.length; i++) {
         if (products[i].id === id) {
             foundProduct = products[i]
             indexFoundProduct = i;
             cartList.push(foundProduct);
         }
-    } 
+    }
 
-   let indexCartProduct = cart.findIndex(cartProduct => cartProduct === foundProduct);
-    
-   if (indexCartProduct != -1){
-     cart[indexCartProduct].quantity++;
-   }else{
-    products[indexFoundProduct].quantity = 1;;
-    cart.push(products[indexFoundProduct]);
-   }
+    let indexCartProduct = cart.findIndex(cartProduct => cartProduct === foundProduct);
+
+    if (indexCartProduct != -1) {
+        cart[indexCartProduct].quantity++;
+    } else {
+        products[indexFoundProduct].quantity = 1;;
+        cart.push(products[indexFoundProduct]);
+    }
 
     document.getElementById("count_product").innerHTML = cartList.length;
-
-    // Refactor previous code in order to simplify it 
-    // 1. Loop for to the array products to get the item to add to cart -done
-    // 2. Add found product to the cart array or update its quantity in case it has been added previously.
 }
 
 // Exercise 9
+//Remove the items from cartList
 function removeFromCart(id) {
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cartList array
-     
+
     let indexCartProduct = cart.findIndex(cartProduct => cartProduct.id === id);
-     
-    if (indexCartProduct != -1){
-      cart[indexCartProduct].quantity--;
-      cartList.pop();
-      document.getElementById("count_product").innerHTML = cartList.length;
-    }else{
-     alert("This product is not in the cart")
+
+    if (indexCartProduct != -1) {
+        cart[indexCartProduct].quantity--;
+        cartList.pop();
+        document.getElementById("count_product").innerHTML = cartList.length;
+    } else {
+        alert("This product is not in the cart")
     }
 }
 
