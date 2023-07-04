@@ -87,8 +87,6 @@ function buy(id) {
     }
 
     cartList.push(foundProduct);
-    console.log(cartList);
-
     document.getElementById("count_product").innerHTML = cartList.length;
 }
 
@@ -98,7 +96,6 @@ function cleanCart() {
     cart = [];
     cartList = [];
     printCart();
-    console.log(cart);
 
 }
 
@@ -115,7 +112,6 @@ function calculateTotal() {
         }
     }
 
-    console.log(total);
 }
 
 // Exercise 4
@@ -142,7 +138,7 @@ function generateCart() {
         itemNotInCart = true;
     }
 
-    console.log(cart);
+
 }
 
 // Exercise 5
@@ -160,7 +156,6 @@ function applyPromotionsCart() {
 
     }
 
-    console.log(cart)
 }
 
 // Exercise 6
@@ -173,7 +168,6 @@ function printCart() {
 
     let tbody = document.querySelector("#cart_list");
     tbody.innerHTML = "";
-    console.log(cart);
     for (let i = 0; i <= cart.length; i++) {
 
         let tr = document.createElement("tr");
@@ -245,6 +239,5 @@ function removeFromCart(id) {
 }
 
 function open_modal() {
-    console.log("Open Modal");
     printCart();
 }
