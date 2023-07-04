@@ -108,7 +108,7 @@ function isLettersAndNumbers(fPassword) {
 
 //Check for ONLY numbers, minimum 4
 function isOnlyNumber(phone) {
-	return /^\d{3,}$/.test(phone) && phone.length >= 3;
+	return /^\d{9,}$/.test(phone) && phone.length >= 3;
 }
 
 
