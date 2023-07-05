@@ -14,8 +14,8 @@
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 	<!-- Bootstrap icons-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+		integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link rel="stylesheet" href="myStyles.css">
 
@@ -89,11 +89,7 @@
 						<div class="card-footer pt-0 pb-3 border-top-0 bg-transparent">
 							<div class="text-center"><button type="button" onclick="addToCart(1)" class="pinkButton">Add
 									to cart</button></div>
-						</div>
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><button type="button" onclick="removeFromCart(1)"
-									class="grayButton">Remove from cart</button></div>
-						</div>
+							</div>
 					</div>
 				</div>
 				<div class="col mb-5">
@@ -109,10 +105,6 @@
 							<div class="text-center"><button type="button" onclick="addToCart(2)" class="pinkButton">Add
 									to cart</button></div>
 						</div>
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><button type="button" onclick="removeFromCart(2)"
-									class="grayButton">Remove from cart</button></div>
-						</div>
 					</div>
 				</div>
 				<div class="col mb-5">
@@ -127,10 +119,6 @@
 						<div class="card-footer pt-0 pb-3 border-top-0 bg-transparent">
 							<div class="text-center"><button type="button" onclick="addToCart(3)" class="pinkButton">Add
 									to cart</button></div>
-						</div>
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><button type="button" onclick="removeFromCart(3)"
-									class="grayButton">Remove from cart</button></div>
 						</div>
 					</div>
 				</div>
@@ -155,10 +143,6 @@
 							<div class="text-center"><button type="button" onclick="addToCart(4)" class="pinkButton">Add
 									to cart</button></div>
 						</div>
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><button type="button" onclick="removeFromCart(4)"
-									class="grayButton">Remove from cart</button></div>
-						</div>
 					</div>
 				</div>
 				<div class="col mb-5">
@@ -175,10 +159,6 @@
 							<div class="text-center"><button type="button" onclick="addToCart(5)" class="pinkButton">Add
 									to cart</button></div>
 						</div>
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><button type="button" onclick="removeFromCart(5)"
-									class="grayButton">Remove from cart</button></div>
-						</div>
 					</div>
 				</div>
 				<div class="col mb-5">
@@ -193,10 +173,6 @@
 						<div class="card-footer pt-0 pb-3 border-top-0 bg-transparent">
 							<div class="text-center"><button type="button" onclick="addToCart(6)" class="pinkButton">Add
 									to cart</button></div>
-						</div>
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><button type="button" onclick="removeFromCart(6)"
-									class="grayButton">Remove from cart</button></div>
 						</div>
 					</div>
 				</div>
@@ -222,10 +198,6 @@
 							<div class="text-center"><button type="button" onclick="addToCart(7)" class="pinkButton">Add
 									to cart</button></div>
 						</div>
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><button type="button" onclick="removeFromCart(7)"
-									class="grayButton">Remove from cart</button></div>
-						</div>
 					</div>
 				</div>
 				<div class="col mb-5">
@@ -241,10 +213,6 @@
 							<div class="text-center"><button type="button" onclick="addToCart(8)" class="pinkButton">Add
 									to cart</button></div>
 						</div>
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><button type="button" onclick="removeFromCart(8)"
-									class="grayButton">Remove from cart</button></div>
-						</div>
 					</div>
 				</div>
 				<div class="col mb-5">
@@ -259,10 +227,6 @@
 						<div class="card-footer pt-0 pb-3 border-top-0 bg-transparent">
 							<div class="text-center"><button type="button" onclick="addToCart(9)" class="pinkButton">Add
 									to cart</button></div>
-						</div>
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><button type="button" onclick="removeFromCart(9)"
-									class="grayButton">Remove from cart</button></div>
 						</div>
 					</div>
 				</div>
@@ -296,6 +260,8 @@
 								<th scope="col">Price</th>
 								<th scope="col">Qty.</th>
 								<th scope="col">Total <small>(with discount)</small></th>
+								<th scope="col">+</th>
+								<th scope="col">-</th>
 							</tr>
 						</thead>
 						<tbody id="cart_list">

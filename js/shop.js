@@ -164,11 +164,11 @@ function printCart() {
     //generateCart();
     applyPromotionsCart();
     calculateTotal();
-    document.getElementById("total_price").innerHTML = total;
+    document.getElementById("total_price").innerHTML = (total).toFixed(2);
 
     let tbody = document.querySelector("#cart_list");
     tbody.innerHTML = "";
-    for (let i = 0; i <= cart.length; i++) {
+    for (let i = 0; i < cart.length; i++) {
 
         let tr = document.createElement("tr");
         tbody.append(tr);
@@ -187,10 +187,24 @@ function printCart() {
         if (cart[i].hasOwnProperty("subtotalWithDiscount") && cart[i].quantity >= cart[i].offer.number) {
             tdTotalPrice.innerHTML = cart[i].subtotalWithDiscount;
         } else {
-            tdTotalPrice.innerHTML = cart[i].quantity * cart[i].price;
-        }
+            tdTotalPrice.innerHTML = (cart[i].quantity * cart[i].price).toFixed(2);
+        } 
 
-        tr.append(th, tdPrice1, tdQuantiy, tdTotalPrice);
+        let tdPlus = document.createElement("td");       
+        let addButton = document.createElement("i");
+        addButton.setAttribute("onclick", `addToCart(${cart[i].id})`);
+        addButton.className="fas fa-circle-plus";
+        addButton.id="modal-icon";
+        tdPlus.append(addButton);
+
+        let tdMinus= document.createElement("td");
+        let minusButton = document.createElement("i");
+        minusButton.setAttribute("onclick", `removeFromCart(${cart[i].id})`);
+        minusButton.className="fas fa-circle-minus";
+        minusButton.id="modal-icon"
+        tdMinus.append(minusButton);
+
+        tr.append(th, tdPrice1, tdQuantiy, tdTotalPrice, tdPlus, tdMinus);
     }
 }
 
@@ -220,6 +234,7 @@ function addToCart(id) {
         cart.push(products[indexFoundProduct]);
     }
 
+    printCart();
     document.getElementById("count_product").innerHTML = cartList.length;
 }
 
@@ -231,11 +246,19 @@ function removeFromCart(id) {
 
     if (indexCartProduct != -1) {
         cart[indexCartProduct].quantity--;
+        
+       if (cart[indexCartProduct].quantity==0){
+            cart.splice(indexCartProduct,1);
+        }
+       
         cartList.pop();
+        printCart();
         document.getElementById("count_product").innerHTML = cartList.length;
+        
     } else {
         alert("This product is not in the cart")
     }
+
 }
 
 function open_modal() {
